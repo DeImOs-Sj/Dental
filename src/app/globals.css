@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111827;
+  background: #ffffff;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #E5E7EB; }
+::-webkit-scrollbar-thumb { background: #004E3D; border-radius: 10px; }
+
+/* ── Hero load animations ──────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+.hero-badge  { animation: fadeIn  0.6s ease-out 0.10s both; }
+.hero-title  { animation: fadeUp  0.7s ease-out 0.20s both; }
+.hero-text   { animation: fadeUp  0.7s ease-out 0.35s both; }
+.hero-stats  { animation: fadeUp  0.7s ease-out 0.50s both; }
+.hero-ctas   { animation: fadeUp  0.7s ease-out 0.65s both; }
+.hero-image  { animation: fadeIn  0.9s ease-out 0.40s both; }
+.float-anim  { animation: float   4s  ease-in-out infinite; }
+.pulse-anim  { animation: pulseScale 3s ease-in-out infinite; }
+
+/* ── Service card hover effect ─────────────────────────────── */
+.service-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,78,61,0.12);
+}
+.service-icon {
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.service-card:hover .service-icon {
+  background: #004E3D;
+  color: #ffffff;
+}
+
+/* ── Why-us card ───────────────────────────────────────────── */
+.why-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,78,61,0.1);
+}
+
+/* ── Button shine effect ───────────────────────────────────── */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: rgba(255,255,255,0.18);
+  transform: skewX(-20deg);
+  transition: left 0.4s ease;
+}
+.btn-shine:hover::after {
+  left: 125%;
+}
