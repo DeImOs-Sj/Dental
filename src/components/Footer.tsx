@@ -19,12 +19,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-full bg-[#004E3D] flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 rounded-full bg-[#0077B6] flex items-center justify-center shadow-lg">
                 <ToothIcon className="w-5 h-5 text-white" />
               </div>
               <div>
-                <p className="text-white font-bold text-sm leading-none">Vighnaharta</p>
-                <p className="text-[#1F8A70] text-xs font-medium mt-0.5">Dental Clinic</p>
+                <p className="text-white font-semibold text-sm leading-none">Vighnaharta</p>
+                <p className="text-[#00B4D8] text-xs font-medium mt-0.5">Dental Clinic</p>
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-5">
@@ -35,7 +35,7 @@ export default function Footer() {
               {["FB", "IG", "YT", "IN"].map((s) => (
                 <div
                   key={s}
-                  className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#1F8A70] flex items-center justify-center text-xs font-bold text-gray-400 hover:text-white transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#00B4D8] flex items-center justify-center text-xs font-semibold text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   {s}
                 </div>

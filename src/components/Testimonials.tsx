@@ -1,102 +1,128 @@
-import AnimatedSection from "./AnimatedSection";
+"use client";
+import { useState, useEffect, useCallback } from "react";
 
 const REVIEWS = [
   {
     name: "Priya Mehta",
-    role: "Architect, Mumbai",
-    stars: 5,
-    text: "I had severe dental anxiety before coming here. Dr. Sharma and his team were incredibly patient and gentle. My smile transformation through Invisalign has been life-changing. Highly recommend!",
-    date: "March 2024",
+    text: "Best dental clinic ever. They've got the best technology and the doctors are wonderful. I had my treatment here and never felt weird about going to a clinic. I would recommend Vighnaharta to anyone who wants to get their teeth fixed and have a beautiful smile.",
   },
   {
     name: "Rahul Desai",
-    role: "Software Engineer, Pune",
-    stars: 5,
-    text: "Had a root canal done here — completely pain-free! The clinic is spotlessly clean, the staff is professional, and the equipment is state-of-the-art. Worth every rupee.",
-    date: "January 2024",
+    text: "Had a root canal done here — completely pain-free! The clinic is spotlessly clean, the staff is professional, and the equipment is state-of-the-art. Dr. Sharma was very professional and answered all of my questions. I couldn't have been in any safer hands.",
   },
   {
     name: "Sneha Kapoor",
-    role: "Teacher, Thane",
-    stars: 5,
-    text: "My whole family comes here — from my 6-year-old to my 65-year-old mother. The team makes everyone feel comfortable and the treatment plans are always honest and transparent.",
-    date: "April 2024",
+    text: "Best place to get your dental needs fulfilled. Empathetic and energetic doctors with soft behaviour. They only tell you what is needed and what can be avoided. My whole family comes here and the treatment plans are always honest and transparent.",
+  },
+  {
+    name: "Amit Joshi",
+    text: "The clinic is modern and hygienic. I came for teeth whitening and the results were outstanding. The team was friendly and made me feel comfortable throughout. Highly recommend Vighnaharta Dental for anyone in Pune.",
+  },
+  {
+    name: "Meera Patel",
+    text: "Excellent experience for my child's first dental visit. The pediatric care was exceptional — the staff made my daughter feel at ease and even enjoy the visit. We will definitely be coming back for all our family's dental needs.",
   },
 ];
 
-function Stars({ count }: { count: number }) {
+function SpeechCard({ text, name }: { text: string; name: string }) {
   return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} className="w-4 h-4 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+    <div className="flex flex-col items-start">
+      {/* Card */}
+      <div className="relative border border-white/25 rounded-2xl px-6 pt-6 pb-8 text-center w-full">
+        {/* Top quote */}
+        <div className="text-3xl font-serif text-[#F97316] leading-none mb-4">"</div>
+        <p className="text-white/85 text-sm leading-relaxed text-center">{text}</p>
+        {/* Bottom quote */}
+        <div className="text-3xl font-serif text-[#F97316] leading-none mt-4 flex justify-end">"</div>
+      </div>
+
+      {/* Tail */}
+      <div className="ml-10">
+        <svg width="28" height="18" viewBox="0 0 28 18" fill="none">
+          <path d="M2 0 L2 14 L18 14" stroke="rgba(255,255,255,0.25)" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-      ))}
+      </div>
+
+      {/* Name */}
+      <div className="ml-6 -mt-1 flex items-center gap-2">
+        <span className="text-white font-semibold text-sm">{name}</span>
+        <span className="text-[#F97316] text-lg font-serif leading-none">"</span>
+      </div>
     </div>
   );
 }
 
 export default function Testimonials() {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const total = REVIEWS.length;
+  const visible = 3;
+
+  const prev = useCallback(() =>
+    setCurrent((c) => (c - 1 + total) % total), [total]);
+  const next = useCallback(() =>
+    setCurrent((c) => (c + 1) % total), [total]);
+
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(next, 4500);
+    return () => clearInterval(t);
+  }, [paused, next]);
+
+  const shown = Array.from({ length: visible }, (_, i) => REVIEWS[(current + i) % total]);
+
   return (
-    <section id="testimonials" className="bg-[#E5E7EB] py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section
+      id="testimonials"
+      className="relative py-20 lg:py-28 overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Background image + dark overlay */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/clinic_entrance.png')" }}
+      />
+      <div className="absolute inset-0 bg-[#0F2D6B]/82" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-[#1F8A70] text-sm font-semibold uppercase tracking-widest mb-3 block">
-            Patient Stories
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#111827] mb-4">
-            Real Results, Real Smiles
-          </h2>
-          <p className="text-gray-500 text-lg leading-relaxed">
-            Don&apos;t take our word for it — hear from the thousands of patients who trust
-            Vighnaharta Dental Clinic with their smiles.
-          </p>
-        </AnimatedSection>
+        <h2 className="text-4xl sm:text-5xl font-semibold text-white text-center mb-14">
+          Patient Speak
+        </h2>
 
-        {/* Review cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {REVIEWS.map((r, i) => (
-            <AnimatedSection key={r.name} delay={i * 100}>
-              <div className="bg-white rounded-2xl p-7 h-full shadow-sm hover:shadow-md transition-shadow border border-[#E5E7EB] flex flex-col">
-                {/* Quote */}
-                <div className="text-5xl text-[#004E3D] font-serif leading-none mb-4 opacity-30">
-                  "
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-6">
-                  {r.text}
-                </p>
-                <div className="flex items-center justify-between pt-5 border-t border-[#E5E7EB]">
-                  <div className="flex items-center gap-3">
-                    {/* Avatar */}
-                    <div className="w-10 h-10 rounded-full bg-[#004E3D] flex items-center justify-center text-white font-bold text-sm">
-                      {r.name[0]}
-                    </div>
-                    <div>
-                      <p className="text-[#111827] font-semibold text-sm">{r.name}</p>
-                      <p className="text-gray-400 text-xs">{r.role}</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <Stars count={r.stars} />
-                    <p className="text-gray-400 text-xs mt-1">{r.date}</p>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
+        {/* Cards + arrows */}
+        <div className="flex items-center gap-4">
+          {/* Prev */}
+          <button
+            onClick={prev}
+            aria-label="Previous"
+            className="shrink-0 w-10 h-10 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
 
-        {/* Google rating banner */}
-        <AnimatedSection>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E5E7EB] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div>
-              <p className="text-[#111827] font-bold text-lg">Rated 4.9 / 5 on Google</p>
-              <p className="text-gray-500 text-sm">Based on 200+ verified patient reviews</p>
-            </div>
-            <Stars count={5} />
+          {/* 3 cards */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {shown.map((r, i) => (
+              <SpeechCard key={`${r.name}-${i}`} text={r.text} name={r.name} />
+            ))}
           </div>
-        </AnimatedSection>
+
+          {/* Next */}
+          <button
+            onClick={next}
+            aria-label="Next"
+            className="shrink-0 w-10 h-10 rounded-full border border-white/30 bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   );

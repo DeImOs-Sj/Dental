@@ -11,20 +11,20 @@ const IMAGES = [
 
 export default function ClinicGallery() {
   return (
-    <section id="gallery" className="bg-white py-20 lg:py-28">
+    <section id="gallery" className="bg-[#F4F6F8] py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
         <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
-          <span className="inline-flex items-center gap-2 text-[#1F8A70] text-sm font-semibold uppercase tracking-widest mb-4">
-            <span className="w-8 h-px bg-[#1F8A70]" />
+          <span className="inline-flex items-center gap-2 text-[#00B4D8] text-sm font-semibold uppercase tracking-widest mb-4">
+            <span className="w-8 h-px bg-[#00B4D8]" />
             Take A Look Inside
-            <span className="w-8 h-px bg-[#1F8A70]" />
+            <span className="w-8 h-px bg-[#00B4D8]" />
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#111827] mb-4 leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-semibold text-[#111827] mb-4 leading-tight">
             A World-Class Clinic,
             <br />
-            <span className="text-[#004E3D]">Designed For You</span>
+            <span className="text-[#0077B6]">Designed For You</span>
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
             Step into a space built around comfort, hygiene, and cutting-edge dental technology.
@@ -76,26 +76,6 @@ export default function ClinicGallery() {
           </div>
         </AnimatedSection>
 
-        {/* Bottom strip */}
-        <AnimatedSection delay={200}>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#EBF7F2] rounded-2xl px-7 py-5 border border-[#004E3D]/10">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[#004E3D] flex items-center justify-center text-white text-lg shrink-0">
-                📍
-              </div>
-              <div>
-                <p className="text-[#111827] font-bold text-sm">Visit Us In Person</p>
-                <p className="text-gray-500 text-xs mt-0.5">Shop No. 105, Oxy Primo Complex, Wagholi, Pune 412207</p>
-              </div>
-            </div>
-            <a
-              href="#contact"
-              className="shrink-0 bg-[#004E3D] hover:bg-[#003d30] text-white px-6 py-2.5 rounded-xl font-semibold text-sm transition-all hover:shadow-lg whitespace-nowrap btn-shine"
-            >
-              Get Directions →
-            </a>
-          </div>
-        </AnimatedSection>
 
       </div>
     </section>
@@ -114,7 +94,7 @@ function GalleryCell({
         className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
         sizes="(max-width: 1280px) 50vw, 33vw"
       />
-      <div className="absolute inset-0 bg-[#004E3D] opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-[#0077B6] opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
       <LabelBadge label={label} />
     </div>
   );

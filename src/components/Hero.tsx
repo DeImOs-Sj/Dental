@@ -2,137 +2,109 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-[#004E3D] flex items-center pt-16 overflow-hidden"
+      className="bg-[#F4F6F8] pt-24 pb-10 min-h-screen flex flex-col"
     >
-      {/* Background decorative blobs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#1F8A70] opacity-10 blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-white opacity-5 blur-3xl pointer-events-none" />
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-          backgroundSize: "36px 36px",
-        }}
-      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col flex-1 gap-8">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-20 lg:py-28">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* ── Left content ─────────────────────────────────── */}
-          <div className="text-center lg:text-left">
-            {/* Badge */}
-            <div className="hero-badge inline-flex items-center gap-2 bg-[#1F8A70]/20 border border-[#1F8A70]/40 text-[#5ad4a8] rounded-full px-4 py-1.5 text-sm font-medium mb-7">
-              <span className="w-2 h-2 rounded-full bg-[#1F8A70] pulse-anim" />
-              Trusted Dental Care Since 2005
-            </div>
-
-            {/* Headline */}
-            <h1 className="hero-title text-5xl sm:text-6xl lg:text-[68px] font-bold text-white leading-[1.1] mb-6">
-              Your Smile,
-              <br />
-              <span className="text-[#1F8A70]">Our Priority.</span>
-            </h1>
-
-            {/* Sub-text */}
-            <p className="hero-text text-white/60 text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
-              Experience compassionate, world-class dental care for the whole family.
-              From routine checkups to advanced cosmetic treatments — every visit is
-              designed to be comfortable and stress-free.
+        {/* ── Top row: headline + description/CTA ──────────────── */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          {/* Left — headline */}
+          <div>
+            <p className="hero-badge text-[#0077B6] text-sm font-medium mb-3 tracking-wide">
+              Smile &amp; Dental Care
             </p>
+            <h1 className="hero-title text-5xl sm:text-6xl lg:text-[64px] font-semibold text-[#111827] leading-[1.1] max-w-xl">
+              Advanced dentistry<br />for every smile
+            </h1>
+          </div>
 
-            {/* Stats */}
-            <div className="hero-stats flex justify-center lg:justify-start gap-10 mb-10">
-              {[
-                { num: "5,000+", label: "Happy Patients" },
-                { num: "15+", label: "Years Experience" },
-                { num: "20+", label: "Treatments" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <p className="text-3xl font-bold text-white">{s.num}</p>
-                  <p className="text-white/45 text-xs mt-0.5 uppercase tracking-wide">{s.label}</p>
-                </div>
-              ))}
+          {/* Right — tagline + CTA */}
+          <div className="hero-ctas lg:max-w-xs lg:pb-2 flex flex-col items-start gap-5">
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Complete care for your smile — prevention, restoration, and aesthetic
+              treatments in one place.
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-3 bg-[#0F2D6B] hover:bg-[#0a2050] text-white pl-5 pr-3 py-3 rounded-xl font-semibold text-sm transition-all hover:shadow-lg btn-shine"
+            >
+              Schedule Appointment
+              <span className="bg-white/15 rounded-lg px-2.5 py-1 text-xs tracking-wider">››</span>
+            </a>
+          </div>
+        </div>
+
+        {/* ── Cards row ────────────────────────────────────────── */}
+        <div className="hero-stats grid grid-cols-12 gap-4 flex-1 min-h-72">
+
+          {/* Card 1 — large, dark blue, treatment */}
+          <div className="col-span-12 lg:col-span-6 bg-[#0F2D6B] rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between min-h-72 group">
+            {/* Background clinic image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity duration-500"
+              style={{ backgroundImage: "url('/equippment.png')" }}
+            />
+            {/* Top content */}
+            <div className="relative z-10">
+              <h3 className="text-white font-semibold text-2xl sm:text-3xl mb-3">Dental Treatment</h3>
+              <p className="text-white/65 text-sm leading-relaxed max-w-xs">
+                Comprehensive care including check-ups, fillings, root canal therapy,
+                crowns, and preventive treatments — tailored to your needs.
+              </p>
             </div>
-
-            {/* CTAs */}
-            <div className="hero-ctas flex flex-wrap justify-center lg:justify-start gap-4">
-              <a
-                href="#contact"
-                className="bg-[#1F8A70] hover:bg-[#18705c] text-white px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-200 hover:shadow-2xl hover:-translate-y-0.5 btn-shine"
-              >
-                Book Appointment →
-              </a>
+            {/* Bottom row */}
+            <div className="relative z-10 flex items-center justify-between mt-6">
+              {/* Avatars */}
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2.5">
+                  {["R", "S", "P"].map((l) => (
+                    <div
+                      key={l}
+                      className="w-9 h-9 rounded-full bg-white border-2 border-[#0F2D6B] flex items-center justify-center text-[#0F2D6B] text-xs font-semibold shrink-0"
+                    >
+                      {l}
+                    </div>
+                  ))}
+                </div>
+                <span className="text-white text-sm font-semibold">+20</span>
+              </div>
+              {/* Arrow button */}
               <a
                 href="#services"
-                className="border border-white/25 hover:border-white/60 text-white/75 hover:text-white px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-white/5"
+                className="w-10 h-10 rounded-xl bg-[#0077B6] hover:bg-[#005d8f] flex items-center justify-center text-white transition-colors"
               >
-                Our Services
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
               </a>
             </div>
           </div>
 
-          {/* ── Right illustration ───────────────────────────── */}
-          <div className="hero-image hidden lg:flex justify-center items-center relative">
-            <div className="relative">
-              {/* Outer ring */}
-              <div className="w-96 h-96 rounded-full border border-white/10 flex items-center justify-center">
-                {/* Inner ring */}
-                <div className="w-72 h-72 rounded-full border border-white/10 bg-white/5 flex items-center justify-center float-anim">
-                  <BigToothSVG />
-                </div>
-              </div>
+          {/* Card 2 — medium, light blue, Orthodontics */}
+          <div className="col-span-6 lg:col-span-3 bg-[#C5DFF5] hover:bg-[#b8d6f2] transition-colors duration-300 rounded-3xl flex items-center justify-center min-h-72 cursor-default">
+            <span
+              className="text-[#0F2D6B] font-semibold text-2xl select-none"
+              style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+            >
+              Orthodontics
+            </span>
+          </div>
 
-              {/* Floating badge — top right */}
-              <div className="absolute -top-2 right-4 bg-white rounded-2xl px-4 py-3 shadow-2xl float-anim [animation-delay:0.5s]">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-full bg-[#004E3D] flex items-center justify-center text-white text-sm">
-                    ★
-                  </div>
-                  <div>
-                    <p className="text-[#111827] font-bold text-sm leading-none">4.9 / 5.0</p>
-                    <p className="text-gray-400 text-xs mt-0.5">200+ Reviews</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating badge — bottom left */}
-              <div className="absolute -bottom-2 left-0 bg-[#1F8A70] rounded-2xl px-4 py-3 shadow-2xl float-anim [animation-delay:1s]">
-                <p className="text-white font-bold text-sm leading-none">✓ NABH Certified</p>
-                <p className="text-white/70 text-xs mt-0.5">State-of-the-art facility</p>
-              </div>
-
-              {/* Floating badge — bottom right */}
-              <div className="absolute bottom-8 -right-6 bg-[#111827] rounded-2xl px-4 py-3 shadow-2xl float-anim [animation-delay:1.5s]">
-                <p className="text-white font-bold text-sm leading-none">😊 Painless Care</p>
-                <p className="text-gray-400 text-xs mt-0.5">Advanced anaesthesia</p>
-              </div>
-            </div>
+          {/* Card 3 — white, dental image, Dental Surgery */}
+          <div className="col-span-6 lg:col-span-3 bg-white rounded-3xl relative overflow-hidden flex items-center justify-center min-h-72 group cursor-default">
+            <div
+              className="absolute inset-0 bg-cover bg-center opacity-25 group-hover:opacity-35 transition-opacity duration-500"
+              style={{ backgroundImage: "url('/operational_equippment.png')" }}
+            />
+            <span
+              className="text-[#111827] font-semibold text-2xl relative z-10 select-none"
+              style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+            >
+              Dental Surgery
+            </span>
           </div>
         </div>
       </div>
-
-      {/* Wave divider */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-        <svg
-          viewBox="0 0 1440 72"
-          fill="none"
-          preserveAspectRatio="none"
-          className="w-full h-14 sm:h-[72px]"
-        >
-          <path
-            d="M0 72 L0 40 Q360 0 720 24 Q1080 48 1440 16 L1440 72 Z"
-            fill="#ffffff"
-          />
-        </svg>
-      </div>
     </section>
-  );
-}
-
-function BigToothSVG() {
-  return (
-    <svg viewBox="0 0 120 150" className="w-36 h-36 text-white/20" fill="currentColor">
-      <path d="M60 6C44 6 30 13 24 23 18 32 17 42 17 50c0 5 .6 9 1.8 14 2.2 9 4.4 18 6.2 27 1.8 9 3.4 20 9 20 3.5 0 5.8-2.8 7.2-7.2.9-2.8 1.6-6 2.4-9.2.8-3.2 1.8-6.6 4.4-6.6 2.6 0 3.6 3.4 4.4 6.6.8 3.2 1.5 6.4 2.4 9.2 1.4 4.4 3.7 7.2 7.2 7.2 5.6 0 7.2-11 9-20 1.8-9 4-18 6.2-27 1.2-5 1.8-9 1.8-14 0-8-1-18-7-27C90 13 76 6 60 6z" />
-    </svg>
   );
 }

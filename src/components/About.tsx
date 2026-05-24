@@ -1,127 +1,87 @@
-import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 
-const HIGHLIGHTS = [
-  {
-    icon: "🏆",
-    title: "Award-Winning Care",
-    desc: "Recognised by the Maharashtra Dental Association for excellence in patient care and clinical outcomes.",
-  },
-  {
-    icon: "🔬",
-    title: "Latest Technology",
-    desc: "Digital X-rays, 3D scanning, and laser dentistry for precise, minimally invasive treatments.",
-  },
-  {
-    icon: "👨‍⚕️",
-    title: "Experienced Team",
-    desc: "Our specialists average 12+ years of clinical experience across all major dental disciplines.",
-  },
-  {
-    icon: "🛡️",
-    title: "Safety First",
-    desc: "Hospital-grade sterilisation protocols and single-use disposables ensure your complete safety.",
-  },
+const STATS = [
+  { num: "5,000+", label: "happy patients"            },
+  { num: "20+",    label: "treatments offered"         },
+  { num: "15",     label: "years in practice"          },
+  { num: "98%",    label: "patient satisfaction rate"  },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="bg-[#EBF7F2] py-20 lg:py-28">
+    <section id="about" className="bg-[#F4F6F8] py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — text */}
-          <div>
-            <AnimatedSection direction="left">
-              <span className="text-[#1F8A70] text-sm font-semibold uppercase tracking-widest mb-3 block">
-                About Us
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#111827] mb-6 leading-tight">
-                Your Family&apos;s Dental Home
-                <br />
-                <span className="text-[#004E3D]">Since 2005</span>
-              </h2>
-              <p className="text-gray-600 text-base leading-relaxed mb-5">
-                Vighnaharta Dental Clinic was founded with a single mission: to make high-quality
-                dental care accessible, comfortable, and affordable for every family in the
-                community. Over two decades, we have built a reputation for gentle care, honest
-                advice, and outstanding clinical results.
-              </p>
-              <p className="text-gray-600 text-base leading-relaxed mb-8">
-                Our clinic combines the warmth of a neighbourhood practice with the capabilities
-                of a specialist facility — so you never have to look anywhere else for your dental
-                needs.
-              </p>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 bg-[#004E3D] hover:bg-[#003d30] text-white px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 btn-shine"
-              >
-                Book a Consultation
-              </a>
-            </AnimatedSection>
-          </div>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* Right — image + highlights */}
-          <AnimatedSection direction="right" className="flex flex-col gap-5">
-            {/* Equipment photo */}
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-[#004E3D]/10 group">
-              <Image
-                src="/operational_equippment.png"
-                alt="State-of-the-art dental treatment room at Vighnaharta Dental Clinic"
-                width={800}
-                height={530}
-                className="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
-                priority
-              />
-              {/* Overlay badge */}
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-2xl px-4 py-2.5 shadow-lg flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#004E3D] flex items-center justify-center text-white text-sm shrink-0">
-                  ✦
-                </div>
-                <div>
-                  <p className="text-[#111827] font-bold text-sm leading-none">State-of-the-art</p>
-                  <p className="text-gray-500 text-xs mt-0.5">Treatment technology</p>
-                </div>
-              </div>
+          {/* ── Left: text + stats ───────────────────────────── */}
+          <AnimatedSection direction="left">
+            {/* Tag */}
+            <div className="inline-flex items-center gap-2 border border-gray-300 text-gray-600 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
+              <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 1.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM4 7.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM12 7.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM8 11.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+              </svg>
+              About us
             </div>
 
-            {/* 2-col highlights below image */}
-            <div className="grid grid-cols-2 gap-4">
-              {HIGHLIGHTS.map((h, i) => (
-                <div
-                  key={h.title}
-                  className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow border border-[#E5E7EB]"
-                  style={{ transitionDelay: `${i * 60}ms` }}
-                >
-                  <div className="text-2xl mb-2">{h.icon}</div>
-                  <h3 className="font-bold text-[#111827] text-sm mb-1">{h.title}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed">{h.desc}</p>
+            {/* Heading */}
+            <h2 className="text-4xl sm:text-5xl font-semibold text-[#111827] leading-tight mb-10">
+              Expertise you<br />can trust
+            </h2>
+
+            {/* Stats 2×2 grid */}
+            <div className="grid grid-cols-2 gap-x-10 gap-y-0">
+              {STATS.map((s, i) => (
+                <div key={s.label}>
+                  <div className="pb-5 pt-4 border-b border-gray-200">
+                    <p className="text-4xl sm:text-5xl font-semibold text-[#111827] leading-none mb-1.5">
+                      {s.num}
+                    </p>
+                    <p className="text-gray-400 text-sm">{s.label}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </AnimatedSection>
-        </div>
 
-        {/* Doctor spotlight */}
-        <AnimatedSection delay={300}>
-          <div className="mt-16 bg-[#004E3D] rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-center gap-8">
-            {/* Avatar placeholder */}
-            <div className="shrink-0 w-24 h-24 rounded-full bg-[#1F8A70] flex items-center justify-center text-white text-4xl shadow-lg">
-              👨‍⚕️
+          {/* ── Right: circular image + floating cards ───────── */}
+          <AnimatedSection direction="right" className="relative flex justify-center items-center">
+
+            {/* Decorative small circle bottom-left */}
+            <div className="absolute bottom-4 left-0 w-24 h-24 rounded-full bg-[#C5DFF5] opacity-70" />
+
+            {/* Main circle image */}
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shrink-0 shadow-2xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/equippment.png"
+                alt="State-of-the-art dental equipment"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="text-center sm:text-left">
-              <p className="text-[#1F8A70] text-sm font-semibold uppercase tracking-widest mb-1">
-                Chief Dental Officer
-              </p>
-              <h3 className="text-white font-bold text-2xl mb-2">Dr. Rajesh Sharma, MDS</h3>
-              <p className="text-white/65 text-sm leading-relaxed max-w-2xl">
-                With over 18 years of experience in prosthodontics and cosmetic dentistry,
-                Dr. Sharma leads our team with a patient-first philosophy. He has completed
-                advanced training at AIIMS Delhi and holds fellowships from three international
-                dental academies.
-              </p>
+
+            {/* Floating card: Patient rate — top left */}
+            <div className="absolute top-4 left-2 sm:-left-4 bg-white rounded-2xl px-5 py-4 shadow-xl float-anim">
+              <p className="text-gray-500 text-xs mb-2">Patient rate</p>
+              <div className="flex gap-0.5 mb-1">
+                {[1,2,3,4].map(i => (
+                  <svg key={i} className="w-4 h-4 text-[#0077B6]" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+                <svg className="w-4 h-4 text-gray-200" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              </div>
+              <p className="text-[#0077B6] font-semibold text-sm">4.9/5</p>
             </div>
-          </div>
-        </AnimatedSection>
+
+            {/* Floating badge: Expert Hands — bottom right */}
+            <div className="absolute bottom-8 right-0 sm:-right-4 bg-white rounded-xl px-4 py-2.5 shadow-xl float-anim [animation-delay:0.8s]">
+              <p className="text-[#111827] font-semibold text-sm">Expert Hands</p>
+            </div>
+
+          </AnimatedSection>
+        </div>
       </div>
     </section>
   );

@@ -5,14 +5,14 @@ html {
 }
 
 body {
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
   color: #111827;
-  background: #ffffff;
+  background: #F4F6F8;
 }
 
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #E5E7EB; }
-::-webkit-scrollbar-thumb { background: #004E3D; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: #0077B6; border-radius: 10px; }
 
 /* ── Hero load animations ──────────────────────────────────── */
 @keyframes fadeUp {
@@ -51,13 +51,13 @@ body {
 }
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,78,61,0.12);
+  box-shadow: 0 20px 40px rgba(0,119,182,0.12);
 }
 .service-icon {
   transition: background 0.25s ease, color 0.25s ease;
 }
 .service-card:hover .service-icon {
-  background: #004E3D;
+  background: #0077B6;
   color: #ffffff;
 }
 
@@ -67,7 +67,7 @@ body {
 }
 .why-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(0,78,61,0.1);
+  box-shadow: 0 16px 32px rgba(0,119,182,0.1);
 }
 
 /* ── Button shine effect ───────────────────────────────────── */
