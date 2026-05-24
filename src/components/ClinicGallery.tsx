@@ -63,11 +63,11 @@ export default function ClinicGallery() {
             {IMAGES.map((img, i) => (
               <div
                 key={img.src}
-                className={`relative rounded-2xl overflow-hidden group ${i === 0 ? "col-span-2 h-52" : "h-40"}`}
+                className={`relative rounded-2xl overflow-hidden ${i === 0 ? "col-span-2 h-52" : "h-40"}`}
               >
                 <Image
                   src={img.src} alt={img.alt} fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover"
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />
                 <LabelBadge label={img.label} />
@@ -88,13 +88,12 @@ function GalleryCell({
   src: string; alt: string; label: string; className?: string;
 }) {
   return (
-    <div className={`relative rounded-2xl overflow-hidden group cursor-pointer ${className}`}>
+    <div className={`relative rounded-2xl overflow-hidden ${className}`}>
       <Image
         src={src} alt={alt} fill
-        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+        className="object-cover"
         sizes="(max-width: 1280px) 50vw, 33vw"
       />
-      <div className="absolute inset-0 bg-[#0077B6] opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
       <LabelBadge label={label} />
     </div>
   );
@@ -102,7 +101,7 @@ function GalleryCell({
 
 function LabelBadge({ label }: { label: string }) {
   return (
-    <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
       {label}
     </div>
   );

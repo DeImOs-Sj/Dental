@@ -1,92 +1,78 @@
-const LINKS = {
-  Services: [
-    "General Dentistry",
-    "Teeth Whitening",
-    "Orthodontics",
-    "Dental Implants",
-    "Root Canal",
-    "Pediatric Dentistry",
-  ],
-  Company: ["About Us", "Our Team", "Testimonials", "Careers", "Blog"],
-  Support: ["Book Appointment", "Emergency Care", "Insurance", "FAQs", "Contact Us"],
-};
+const ABOUT_LINKS = ["About Clinic", "Our Doctors", "Technology", "Reviews"];
+const SERVICES_LINKS = [
+  "General Dentistry",
+  "Orthodontics",
+  "Dental Implants",
+  "Pediatric Dentistry",
+  "Cosmetic Dentistry",
+];
+const LEGAL_LINKS = ["Privacy Policy", "Terms of Use", "Cookie Policy"];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111827] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-full bg-[#0077B6] flex items-center justify-center shadow-lg">
-                <ToothIcon className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <p className="text-white font-semibold text-sm leading-none">Vighnaharta</p>
-                <p className="text-[#00B4D8] text-xs font-medium mt-0.5">Dental Clinic</p>
-              </div>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-5">
-              Delivering world-class dental care with compassion and precision since 2005.
-              Your smile is our mission.
+    <footer className="bg-[#111827] text-white overflow-hidden">
+      {/* Top section */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Contact */}
+          <div className="space-y-4">
+            <p className="text-gray-300 text-sm leading-relaxed">
+              123 Dental Street, Suite 101<br />
+              Pune, Maharashtra 411001
             </p>
-            <div className="flex gap-3">
-              {["FB", "IG", "YT", "IN"].map((s) => (
-                <div
-                  key={s}
-                  className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#00B4D8] flex items-center justify-center text-xs font-semibold text-gray-400 hover:text-white transition-colors cursor-pointer"
-                >
-                  {s}
-                </div>
-              ))}
-            </div>
+            <p className="text-gray-300 text-sm">+91 98765 43210</p>
+            <p className="text-gray-300 text-sm">info@vighnahartadental.com</p>
           </div>
 
           {/* Links */}
-          {Object.entries(LINKS).map(([title, items]) => (
-            <div key={title}>
-              <h3 className="text-white font-semibold text-sm uppercase tracking-widest mb-4">
-                {title}
-              </h3>
-              <ul className="space-y-2.5">
-                {items.map((item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-white text-sm transition-colors hover:translate-x-1 inline-block transition-transform"
-                    >
-                      {item}
+          <div className="grid grid-cols-3 gap-6">
+            <div>
+              <h3 className="text-white font-semibold text-sm mb-5">About</h3>
+              <ul className="space-y-3">
+                {ABOUT_LINKS.map((l) => (
+                  <li key={l}>
+                    <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+                      {l}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
-
-        {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-xs">
-            © {new Date().getFullYear()} Vighnaharta Dental Clinic. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "Sitemap"].map((l) => (
-              <a key={l} href="#" className="text-gray-500 hover:text-white text-xs transition-colors">
-                {l}
-              </a>
-            ))}
+            <div>
+              <h3 className="text-white font-semibold text-sm mb-5">Services</h3>
+              <ul className="space-y-3">
+                {SERVICES_LINKS.map((l) => (
+                  <li key={l}>
+                    <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+                      {l}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-white font-semibold text-sm mb-5">Legal</h3>
+              <ul className="space-y-3">
+                {LEGAL_LINKS.map((l) => (
+                  <li key={l}>
+                    <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+                      {l}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
-  );
-}
 
-function ToothIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C9.2 2 7.1 3.5 5.6 5.1 4.3 6.4 3.5 8 3.5 9.7c0 1.6.4 3 1 4.6.6 1.6.9 3.1 1.2 4.6.4 1.8.9 4.1 2.6 4.1.9 0 1.5-.7 1.9-1.7.4-.9.7-2.1 1-3.1.2-.8.5-1.7 1.3-1.7s1.1.9 1.3 1.7c.3 1 .6 2.2 1 3.1.4 1 1 1.7 1.9 1.7 1.7 0 2.2-2.3 2.6-4.1.3-1.5.6-3 1.2-4.6.6-1.6 1-3 1-4.6 0-1.7-.8-3.3-2.1-4.6C16.9 3.5 14.8 2 12 2z" />
-    </svg>
+      {/* Bottom bar */}
+      <div className="border-t border-white/10 mx-6 sm:mx-10 mt-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <p className="text-gray-500 text-xs">
+          © {new Date().getFullYear()} Vighnaharta Dental Clinic
+        </p>
+        <p className="text-gray-500 text-xs">All rights reserved</p>
+      </div>
+    </footer>
   );
 }

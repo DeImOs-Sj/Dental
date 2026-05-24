@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
@@ -25,10 +26,14 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 shrink-0">
-          <p className="text-[#111827] font-semibold text-sm leading-none tracking-wide">Vighnaharta</p>
-          <span className="text-gray-300 text-sm">|</span>
-          <p className="text-[#0077B6] text-xs font-medium">Dental Clinic</p>
+        <a href="#home" className="flex items-center shrink-0">
+          <Image
+            src="/Vighnaharta Dental Logo - B.svg"
+            alt="Vighnaharta Dental Clinic"
+            width={140}
+            height={48}
+            priority
+          />
         </a>
 
         {/* Desktop links */}
@@ -95,14 +100,6 @@ export default function Navbar() {
         </div>
       </div>
     </header>
-  );
-}
-
-function ToothIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C9.2 2 7.1 3.5 5.6 5.1 4.3 6.4 3.5 8 3.5 9.7c0 1.6.4 3 1 4.6.6 1.6.9 3.1 1.2 4.6.4 1.8.9 4.1 2.6 4.1.9 0 1.5-.7 1.9-1.7.4-.9.7-2.1 1-3.1.2-.8.5-1.7 1.3-1.7s1.1.9 1.3 1.7c.3 1 .6 2.2 1 3.1.4 1 1 1.7 1.9 1.7 1.7 0 2.2-2.3 2.6-4.1.3-1.5.6-3 1.2-4.6.6-1.6 1-3 1-4.6 0-1.7-.8-3.3-2.1-4.6C16.9 3.5 14.8 2 12 2z" />
-    </svg>
   );
 }
 
