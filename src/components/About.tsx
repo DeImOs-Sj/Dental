@@ -2,8 +2,8 @@ import AnimatedSection from "./AnimatedSection";
 
 const STATS = [
   { num: "5,000+", label: "happy patients"            },
-  { num: "20+",    label: "treatments offered"         },
-  { num: "15",     label: "years in practice"          },
+  { num: "8+",     label: "treatments offered"         },
+  { num: "7 days", label: "open every week"            },
   { num: "98%",    label: "patient satisfaction rate"  },
 ];
 
