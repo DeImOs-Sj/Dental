@@ -1,3 +1,4 @@
+import Link from "next/link";
 import AnimatedSection from "./AnimatedSection";
 
 const TAGS = [
@@ -12,11 +13,13 @@ const SIDE_CARDS = [
     icon: "⚡",
     title: "Transparent Pricing",
     desc: "Clear upfront costs, no hidden fees. Flexible EMI options available for all treatments.",
+    href: "tel:+918007978328",
   },
   {
     icon: "🛡️",
     title: "Hospital-Grade Safety",
     desc: "Strict sterilisation protocols and single-use disposables — your safety is non-negotiable.",
+    href: "/about",
   },
 ];
 
@@ -112,14 +115,14 @@ export default function WhyUs() {
                 <p className="text-white/70 text-sm leading-relaxed max-w-[200px]">
                   Modern equipment, painless procedures, and transparent pricing — always.
                 </p>
-                <a
-                  href="#contact"
+                <Link
+                  href="tel:+918007978328"
                   className="shrink-0 w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H7M17 7v10"/>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </AnimatedSection>
@@ -134,14 +137,14 @@ export default function WhyUs() {
                       <span className="text-2xl mb-3 block">{c.icon}</span>
                       <h3 className="text-[#111827] font-semibold text-2xl">{c.title}</h3>
                     </div>
-                    <a
-                      href="#contact"
+                    <Link
+                      href={c.href}
                       className="shrink-0 w-9 h-9 rounded-xl bg-[#0F2D6B] hover:bg-[#0a2050] flex items-center justify-center text-white transition-colors"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H7M17 7v10"/>
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                   <p className="text-gray-500 text-sm leading-relaxed mt-4">{c.desc}</p>
                 </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import AnimatedSection from "./AnimatedSection";
 
 const TAGS = [
@@ -12,11 +13,13 @@ const SIDE_CARDS = [
     title: "Implantology",
     desc:  "Advanced dental implants and full-mouth restorations with precise digital planning.",
     bg:    "bg-white",
+    href:  "/services/dental-implants",
   },
   {
     title: "Digital Dentistry",
     desc:  "3D diagnostics, digital scanning, and precision-guided treatment planning.",
     bg:    "bg-[#D6EEFF]",
+    href:  "/services/general-dentistry",
   },
 ];
 
@@ -52,6 +55,18 @@ export default function Services() {
               <div>
                 <p className="text-5xl font-semibold text-[#111827] mb-1">5,000+</p>
                 <p className="text-gray-400 text-sm leading-snug">successful treatments<br/>performed</p>
+              </div>
+
+              <div className="mt-4">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-1.5 text-[#0077B6] text-sm font-medium hover:underline"
+                >
+                  View all services
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10"/>
+                  </svg>
+                </Link>
               </div>
 
               <div className="flex flex-col gap-2.5 mt-6">
@@ -110,14 +125,14 @@ export default function Services() {
                 <p className="text-[#0F2D6B]/80 text-sm leading-relaxed max-w-[200px]">
                   Modern braces and clear aligners for balanced, healthy smiles.
                 </p>
-                <a
-                  href="#contact"
+                <Link
+                  href="/services/orthodontics-braces"
                   className="shrink-0 w-10 h-10 rounded-xl bg-[#0F2D6B] hover:bg-[#0a2050] flex items-center justify-center text-white transition-colors"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H7M17 7v10"/>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </AnimatedSection>
@@ -129,14 +144,14 @@ export default function Services() {
                 <div className={`${c.bg} rounded-3xl p-7 h-full flex flex-col justify-between min-h-[180px] relative group`}>
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="text-[#111827] font-semibold text-2xl">{c.title}</h3>
-                    <a
-                      href="#contact"
+                    <Link
+                      href={c.href}
                       className="shrink-0 w-9 h-9 rounded-xl bg-[#0F2D6B] hover:bg-[#0a2050] flex items-center justify-center text-white transition-colors"
                     >
                       <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 17L17 7M17 7H7M17 7v10"/>
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                   <p className="text-gray-500 text-sm leading-relaxed mt-4">{c.desc}</p>
                 </div>
